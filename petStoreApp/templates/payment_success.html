@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Fallback color */
+            background-image: url('{% static 'gcash-back.jpg' %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity as needed */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .success-icon {
+            color: #28a745;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .btn-goback {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-goback:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your payment. A receipt has been sent to your email.</p>
+        <a href="{% url 'index' %}" class="btn-goback">Go back to home</a>
+    </div>
+
+</body>
+</html>

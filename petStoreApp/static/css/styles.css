@@ -1,0 +1,450 @@
+
+/* Paragraph styles */
+p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* Sidebar styles */
+.sidebar {
+    background-color: #f4f4f48e;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.sidebar hr {
+    border: none;
+    border-top: 1px solid #f0ecec96;
+    margin: 15px 0;
+}
+
+.sidebar a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #4088d4; /* Blue link color */
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+    color: #2f80d6; /* Darker blue on hover */
+}
+
+.sidebar {
+    padding: 50px;
+    border-radius: 20px;
+    width: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    color: #333;
+    font-size: 16px;
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 24px auto;
+    transition: all 0.3s ease;
+}
+
+
+.webmadewell {
+    background-color: white;
+  }
+  body {
+    margin: 0;
+  }
+  .sample-header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image: url("http://webmadewell.com/wp-content/uploads/2018/01/img-bg-sample-parallax-header.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .sample-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: MidnightBlue;
+    opacity: 0.3;
+  }
+  .sample-header-section {
+    position: relative;
+    padding: 15% 0 10%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(20, 20, 20);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    font-family: "Montserrat", sans-serif;
+  }
+  h1 {
+    font-weight: 500;
+  }
+  h2 {
+    font-weight: 400;
+  }
+  .sample-section-wrap {
+    position: relative;
+    background-color: white;
+  }
+  .sample-section {
+    position: relative;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+  }
+
+
+.col-md-9 {
+    margin-top: 3rem;
+    background-color: #dce8ec; 
+    padding: 1.5rem; 
+    border-radius: 2rem; 
+    color: black;
+}
+
+.col-md-3 .mt-4{
+    margin-top: 3rem;
+    background-color: #adc5e5f8; 
+    padding: 1.5rem; 
+    border-radius: 2rem; 
+    color: black;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-4 {
+    padding-right: 20px; 
+    padding-left: 20px; 
+    padding-top: 20px ;
+}
+
+
+
+.card-img-top {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Maintain aspect ratio of the image */
+    border-top-left-radius: 0.25rem; /* Optional: Add rounded corners */
+    border-top-right-radius: 0.25rem; /* Optional: Add rounded corners */
+}
+
+.card-body {
+    padding: 1.25rem; /* Adjust padding as needed */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem; /* Adjust margin as needed */
+}
+
+.card-text {
+    margin-bottom: 1rem; /* Adjust margin as needed */
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff; /* Primary button color */
+    border-color: #007bff; /* Primary button border color */
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0069d9; /* Primary button hover color */
+    border-color: #0062cc; /* Primary button hover border color */
+}
+
+select:hover {
+    border-color: #aaa;
+}
+
+/* Dropdown option styles */
+option {
+    color: #333;
+}
+
+/* Hover effect for dropdown options */
+option:hover {
+    background-color: #f0f0f0;
+}
+
+/* Filter form styles */
+.filter-form {
+    margin-top: 20px;
+}
+
+/* Filter form heading styles */
+.filter-form h5 {
+    color: #000000; /* Dark text color */
+}
+
+/* Form label styles */
+.form-label {
+    color: #000000; /* Slightly darker text color */
+}
+
+/* Form input styles */
+.form-control {
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text color */
+}
+
+/* Submit button styles */
+.btn-primary {
+    background-color: #007bff; /* Blue button background color */
+    border-color: #007bff; /* Blue button border color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+.landing-search {
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    margin-bottom: 20px; /* Add some space below the form */
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center; 
+}
+
+.form-control {
+    border-radius: 20px; /* Rounded corners for the input */
+    padding: 10px; /* Increase padding for better appearance */
+}
+
+.btn {
+    border-radius: 25px; /* Rounded corners for the button */
+    margin-left: 10px; /* Add some space between the input and button */
+}
+
+h4{
+    font-size: 1.5rem;
+    color:#000000;   
+}
+
+
+.filter-form {
+    margin-top: 20px;
+}
+
+/* Card Styles */
+.card {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #020202c4;
+}
+
+  .login-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+        z-index: 1000; /* Higher z-index to ensure it's on top of other content */
+        opacity: 0;
+        pointer-events: none; /* Initially hidden and not clickable */
+        transition: opacity 0.3s ease-out;
+    }
+    
+    .login-card {
+        width: 400px;
+        background-color: #fff;
+        margin: 40px; /* Added margin for spacing */
+        padding: 80px; /* Added padding for content spacing */
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        transform: scale(0.8);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        z-index: 1100; /* Higher z-index to ensure it's above the background */
+    }
+    
+    .login-container.active {
+        opacity: 1;
+        pointer-events: auto; /* Visible and clickable */
+    }
+    
+    .login-card.active {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+    }
+    
+    
+    .login-container.active {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    .login-card.active {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    
+    .close-animation {
+        animation: fadeOut 0.3s ease-out forwards;
+    }
+
+    /*////////////////////        LOGIN              / ///////////////////////////////*/ 
+
+    #close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1200; 
+    }
+    .container {
+        max-width: 1200px; /* Adjust the maximum width as needed */
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+    .login-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.712); /* Semi-transparent black background */
+        z-index: 1000; 
+        opacity: 0;
+        pointer-events: none; 
+        transition: opacity 0.3s ease-out;
+    }
+    
+    .login-card {
+        width: 400px;
+        background-image: url("static/dog.jpg");
+        margin: 40px; /* Added margin for spacing */
+        padding: 80px; /* Added padding for content spacing */
+        border-radius: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.63);
+        transform: scale(0.8);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        z-index: 1100; /* Higher z-index to ensure it's above the background */
+    }
+    
+    .login-container.active {
+        opacity: 1;
+        pointer-events: auto; /* Visible and clickable */
+    }
+    
+    .login-card.active {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+    /* Animation for the pop-up effect */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+    }
+    
+    .login-container.active {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    .login-card.active {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    /* Animation for closing the pop-up */
+    .close-animation {
+        animation: fadeOut 0.10s ease-out forwards;
+    }
+
+

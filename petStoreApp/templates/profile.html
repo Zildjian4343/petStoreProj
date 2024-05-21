@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+Profile | Your Site Name
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>User Profile</h2>
+    <p><b>Username:</b> {{ user.username }}</p>
+    <p><b>Email:</b> {{ user.email }}</p>
+    {% if user.profile.full_name %}
+    <p><b>Full Name:</b> {{ user.profile.full_name }}</p>
+    {% endif %}
+    {% if user.profile.mobile_number %}
+    <p><b>Mobile Number:</b> {{ user.profile.mobile_number }}</p>
+    {% endif %}
+    <!-- Add more profile information here if needed -->
+</div>
+{% endblock %}

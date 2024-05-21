@@ -1,0 +1,18 @@
+Payment Receipt - Pet Store
+
+Kharle Jane Pets & Products
+-----------------------------
+Thank you for shopping with us!
+
+Dear Customer,
+
+We have received your payment. Below are the details of your transaction:
+
+Payment Amount: PHP {{ payment_amount }} 
+Your email: {{ email }}
+Your Reference Number: {{ reference_number }}
+Mobilenumber: {{ mobile_number }}
+[Your Payment Screenshot below] {{ payment_screenshot_url }}
+
+Pet Store, Badelles St, Poblacion Iligan City Philippines
+Visit our website: https://www.KharleJanePetandProducts.com

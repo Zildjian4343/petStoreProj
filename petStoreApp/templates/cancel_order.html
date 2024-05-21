@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/javascript.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Cancel Order</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Cancel Order</h1>
+        <p>Are you sure you want to cancel this order?</p>
+        <form action="{% url 'cancel_order' order_id=order.order_id %}" method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Cancel Order</button>
+        </form>
+        <a href="{% url 'previous_page' %}">Back to Previous Page</a>
+    </div>
+</body>
+</html>

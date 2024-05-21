@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Add Pet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/dog.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        form input[type="text"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        
+        form button[type="submit"],
+        button.back-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        form button[type="submit"]:hover,
+        button.back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Pet</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Pet</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var backButton = document.createElement("button");
+            backButton.innerText = "Back to Dashboard";
+            backButton.classList.add("btn", "btn-secondary", "back-button");
+            backButton.addEventListener("click", function() {
+                window.location.href = "/adminn/";
+            });
+            document.body.appendChild(backButton);
+
+            {% if success %}
+            alert('Pet successfully added!');
+            {% endif %}
+        });
+    </script>
+</body>
+</html>

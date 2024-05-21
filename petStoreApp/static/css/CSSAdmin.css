@@ -1,0 +1,155 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #3b8eea;
+    padding: 20px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    transition: all 0.3s ease;
+    border-right: 5px solid #2970b9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #2970b9;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.custom-container {
+    padding: 20px;
+}
+
+.custom-main-content {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.custom-col {
+    flex: 0 0 calc(20% - 20px);
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .custom-col {
+        flex: 0 0 calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-col {
+        flex: 0 0 calc(50% - 20px);
+    }
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+  #scroll-for-appointments {
+        max-height: 400px; /* Adjust the height as needed */
+        overflow-y: scroll;
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .table th, .table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    .table th {
+        background-color: #f2f2f2;
+    }

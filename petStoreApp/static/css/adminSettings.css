@@ -1,0 +1,277 @@
+/* ADMIN SETTINGS CSS  YEAH BRIAN CAPIRAL */
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 530px;
+    text-align: center;
+    margin: auto; /* Center the container */
+    margin-top: 100px; /* Adjust top margin to make space for the nav bar */
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form p {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    color: #555;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3576f0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #b1d3ee;
+}
+
+nav.navbar {
+    background-color: #343a40;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+
+nav.navbar a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+
+nav.navbar a:hover {
+    background-color: #495057;
+}
+
+.main-content {
+    margin-top: 60px; /* Ensure content does not hide behind the fixed navbar */
+    padding: 20px;
+}
+
+.card-container .card {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: black;
+    text-align: left;
+}
+
+#scroll-for-pets, #scroll-for-orders, #scroll-for-customers {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: #3b8eea;
+    padding: 20px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    transition: all 0.3s ease;
+    border-right: 5px solid #2970b9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: #2970b9;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.card {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.custom-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.custom-main-content {
+    margin: 0 auto; /* Centering the content */
+    max-width: 1400px; /* Limiting width */
+}
+
+.custom-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px; /* Adding negative margin to compensate for padding */
+}
+
+.custom-col {
+    flex: 0 0 calc(20% - 20px); /* Calculating width with 20px spacing between columns */
+    margin: 0 10px; /* Adding spacing between columns */
+}
+
+@media (max-width: 768px) {
+    .custom-col {
+        flex: 0 0 calc(33.33% - 20px); /* On smaller screens, show 3 items per row */
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-col {
+        flex: 0 0 calc(50% - 20px); /* On even smaller screens, show 2 items per row */
+    }
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    color: white;
+}
+
+.container {
+    margin-top: 20px;
+}

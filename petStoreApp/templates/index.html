@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title> Kharle Jane Pet Store | Base </title>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<style>
+    /* Define styles for the landing page */
+    .landing-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+        text-align: center;
+        z-index: 1; /* Ensure content is above the background image */
+    }
+    
+    .landing-header {
+        color: white;
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+    
+    .landing-search {
+        display: inline-block;
+        margin-top: 40px;
+        width: 23%;
+    }
+    
+    .container-fluid {
+        padding: 0; /* Remove default padding of container-fluid */
+    }
+    
+   
+        .dogs-image {
+            display: block;
+            width: 102%; /* Adjust the width as needed */
+            height: auto;
+            z-index: 0; /* Ensure background image is behind the content */
+            position: relative; /* Position the background image relative to its container */
+            left: 50%; /* Move the background image 50% to the right */
+            transform: translateX(-50%); /* Center the background image horizontally */
+            animation: fadeInBackground 2s ease-in; /* Animation settings */
+            border-radius: 10px;
+
+        }
+    
+        @keyframes fadeInBackground {
+            0% { opacity: 0; } /* Start with opacity 0 (fully transparent) */
+            100% { opacity: 1; } /* End with opacity 1 (fully visible) */
+        }
+        .calligraphy-text {
+            font-family: 'Dancing Script', cursive; 
+            font-size: 4em; 
+            color: white; 
+            font-weight: bold; 
+            text-shadow: 4px 5px 2px rgba(0, 0, 0, 1); 
+        }
+        
+    </style>
+    
+    <section id="/">    
+<main class="l-main">
+    <!--===== HOME =====-->
+    <section class="home bd-grid" id="home">
+        <div class="landing-content">
+            <h1 class="calligraphy-text">Welcome to Kharle Jane Pet Store</h1>
+            <form class="landing-search" role="search" method="post" action="{% url 'search' %}">
+                {% csrf_token %}
+                <div class="search-wrapper">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        
+        <img src="/static/backg.jpg" alt="Dogs" class="dogs-image">
+    </section>
+</main>
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'grooming_reservation' %}" class="btn btn-primary">View Appointment Status</a>
+        {% endif %}
+ 
+<section id="Categories">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 mt-3 sidebar">
+
+
+        
+
+            <h3>Categories</h3>
+            <hr>
+            <h4>Pet Type</h4>
+            <select onchange="window.location.href=this.value">
+                <option value="/">All</option>
+                <option value="/catlist">Cats</option>
+                <option value="/doglist">Dogs</option>
+            </select>
+
+            <h4>Pet Accessories</h4>
+            <select onchange="window.location.href=this.value">
+                <option value="/Collars">Collars</option>
+                <option value="/Toys">Toys</option>
+                <option value="/Foods">Foods</option>
+                <option value="/Grooming">Grooming</option>
+                <option value="/Clothing">Clothing</option>
+                <option value="/Health">Health</option>
+                <option value="/Housing">Housing</option>
+            </select>
+   
+      
+        
+            <div class="filter-form">
+                <h5>Filter by Price</h5>
+                <hr>
+                <form method="POST" action="{% url 'range' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="Input1" class="form-label">Minimum</label>
+                        <input type="text" class="form-control" name="min" id="Input1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInput2" class="form-label">Maximum</label>
+                        <input type="text" class="form-control" name="max" id="exampleInput2">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+                
+
+
+            <div class="filter-form">
+                <h5>Sort by Price</h5>
+                <hr>
+                <a href="/descpriceOrder">High to Low</a>
+                <a href="/priceOrder">Low to High</a>
+            </div>
+
+            
+            
+        </div>
+
+        
+        
+        <div class="col-md-9 mt-3 bg-body-secondary">
+            <div class="row">
+                {% for x in pet %}
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{x.image.url}}" class="card-img-top" alt="image" style="width: 100%; height: 250px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.pet_name}}</h5>
+                            <p class="card-text"><b>Price:</b> {{x.price}} <b>PHP</b></p>
+                            <a href="/petDetails/{{x.pet_id}}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="image" style="width: 100%; height: 250px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.product_name }}</h5>
+                            <p class="card-text"><b>Price:</b> {{ product.price }} <b>PHP</b></p>
+                            <a href="{% url 'product_detail' product_id=product.pk %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
+    

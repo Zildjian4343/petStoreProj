@@ -1,0 +1,333 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/CSSAdmin.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+  
+    
+    
+    </style>
+<body>
+    <div class="sidebar">
+        <h2>Admin Dashboard</h2>
+        <ul>
+            <li><a href="#pets"><i class="fas fa-paw"></i> Products</a></li>
+            <li><a href="#orders"><i class="fas fa-shopping-basket"></i> Orders</a></li>
+            <li><a href="#appointments"><i class="fas fa-calendar-alt"></i> Appointments</a></li>
+            <li><a href="{% url 'settings' %}"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+    
+    <div class="custom-container">
+       
+        <div class="custom-main-content">
+       <center><h4>Admin Chart </h4></center>
+            <div class="custom-row">
+                <div class="custom-col">
+                    <canvas id="petsCountChart" width="100" height="100"></canvas>
+                </div>
+                <div class="custom-col">
+                    <canvas id="cartItemsCountChart" width="100" height="100"></canvas>
+                </div>
+                <div class="custom-col">
+                    <canvas id="ordersCountChart" width="100" height="100"></canvas>
+                </div>
+                <div class="custom-col">
+                    <canvas id="totalSalesChart" width="100" height="100"></canvas>
+                </div>
+                <div class="custom-col">
+                    <canvas id="totalUsersChart" width="100" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="main-content">
+        <div class="card-container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Products Count</h5>
+                            <p class="card-text">{{ pets_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Cart Items Count</h5>
+                            <p class="card-text">{{ cart_items_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Orders Count</h5>
+                            <p class="card-text">{{ orders_count }}</p>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Users</h5>
+                            <p class="card-text">{{ total_users }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="usersChart"></canvas>
+            </div>
+        </div>
+
+        <section id="pets">
+            <h2>Pets and Products</h2>
+            <br>
+            <section id="scroll-for-pets" style="max-height: 680px; overflow-y: auto;">
+                <a href="{% url 'add_pet' %}" class="btn btn-primary mb-3">Add Pet</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pet in pets %}
+                        <tr>
+                            <td>{{ pet.pet_id }}</td>
+                            <td>{{ pet.product_name }}</td>
+                            <td>{{ pet.category }}</td>
+                            <td>{{ pet.price }}</td>
+                            <td>{{ pet.desc }}</td>
+                            <td><img src="{{ pet.image.url }}" alt="{{ pet.product_name }}" style="width: 100px; height: auto;"></td>
+                            <td>
+                                <a href="{% url 'edit_pet' pet.pet_id %}" class="btn btn-sm btn-primary">Edit</a>
+                                <form action="{% url 'delete_pet' pet.pet_id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="pet_id" value="{{ pet.pet_id }}">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Product?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        
+        
+
+        <br><br>
+
+        <section id="orders">
+            <h2>Orders</h2>
+            <br>
+            <section id="scroll-for-orders">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Product or Pet</th>
+                            <th>Email</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>User</th>
+                            <th>Date Purchased</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_id }}</td>
+                            <td>
+                                <img src="{{ order.pet.image.url }}" alt="{{ order.pet.product_name }}" style="width: 100px; height: auto;">
+                            </td>
+                            <td>{{ order.user.email }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.pet.price }}</td>
+                            <td>{{ order.user }}</td>
+                            <td>{{ order.date_added }}</td>
+                            <td>
+                                {% if order.is_completed %}
+                                Completed
+                                {% else %}
+                                Pending
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if not order.is_completed %}
+                                <form action="{% url 'mark_completed' order.order_id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary mb-3">Accept Order</button>
+                                </form>
+                                {% endif %}
+                                <form action="{% url 'cancel_order' order.order_id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        
+        <style>
+            #scroll-for-orders {
+                max-height: 400px; /* Adjust the height as needed */
+                overflow-y: auto;
+                border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+                padding: 10px; /* Optional: Add padding for better spacing */
+            }
+        
+            #scroll-for-orders table {
+                width: 100%; /* Ensure the table takes the full width of the scrollable area */
+            }
+        </style>
+        <section id="appointments">
+            <h2>Grooming Appointments</h2>
+            <br>
+            <section id="scroll-for-appointments">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pet Name</th>
+                            <th>Pet Type</th>
+                            <th>Appointment Date</th>
+                            <th>Appointment Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in appointments %}
+                        <tr>
+                            <td>{{ appointment.id }}</td>
+                            <td>{{ appointment.pet_name }}</td>
+                            <td>{{ appointment.pet_type }}</td>
+                            <td>{{ appointment.appointment_date }}</td>
+                            <td>{{ appointment.appointment_time }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+
+        <section id="customers">
+            <h2>Customers</h2>
+            <br>
+            <section id="scroll-for-customers">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Full Name</th>
+                            <th>Mobile Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.id }}</td>
+                            <td>{{ customer.username }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.profile.full_name }}</td>
+                            <td>{{ customer.profile.mobile_number }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data from Django template variables
+            const chartData = {
+                petsCount: {{ pets_count }},
+                cartItemsCount: {{ cart_items_count }},
+                ordersCount: {{ orders_count }},
+                totalSales: {{ total_sales }},
+                totalUsers: {{ total_users }}
+            };
+    
+            // Function to create chart
+            function createChart(ctx, label, data, backgroundColor, borderColor) {
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [label],
+                        datasets: [{
+                            label: label,
+                            data: [data],
+                            backgroundColor: backgroundColor,
+                            borderColor: borderColor,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+    
+            // Loop through chart data and create charts dynamically
+            for (const [chartId, chartValue] of Object.entries(chartData)) {
+                const ctxChart = document.getElementById(chartId + 'Chart').getContext('2d');
+                createChart(ctxChart, chartId.replace(/([a-z0-9])([A-Z])/g, '$1 $2'), chartValue, getRandomColor(), getRandomColor());
+            }
+        });
+    
+        // Function to generate random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>

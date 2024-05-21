@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<title> Kharle Jane Pet Store | Base </title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/javascript.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navstyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<style>
+    body {
+        background-image: url('dog.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .logo-image {
+        margin-left: 20px;
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #f1c40f;
+        color: black;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-radius: 5px;
+    }
+    
+    /* Close button */
+    .popup .close {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .popup .promo-text {
+        font-size: 14px;
+        color: #2c3e50;
+    }
+
+</style>
+<body>
+    <body style="background-image: url('{% static 'foodBg.jpg' %}');">
+        <script src="javascript.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <!-- Navbar --> <!-- Navbar --> <!-- Navbar --> <!-- Navbar --> <!-- Navbar --> <!-- Navbar --> <!-- Navbar --> <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(237, 223, 255);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="{% static 'LogoCircle.png' %}" alt="Karle Jane Logo" height="100px" margin-left="20px">
+                    </a>
+            
+                    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#Categories"><i class="fas fa-th-large"></i> Categories</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> About</a>
+                            </li>
+            
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-user"></i> Welcome {{ user.username }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/viewOrder"><i class="fas fa-box"></i> My Orders</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-user"></i> Welcome! Guest</a>
+                            </li>
+                            {% endif %}
+            
+                            <li class="nav-item Cart-item">
+                                <a class="nav-link" href="/viewCart"><i class="fas fa-shopping-cart"></i> Cart</a>
+                            </li>
+            
+                            {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/register"><i class="fas fa-user-plus"></i> Register</a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            
+            
+        </div>
+        {% if user.is_superuser %}
+        <li class="nav-item">
+            <a href="{% url 'admin:index' %}" class="nav-link btn btn-outline-primary"  target="_blank">Admin</a>
+        </li>
+    {% endif %}
+        <div class="row">
+            {% block body %}
+
+            {% endblock %}
+        </div>
+
+
+      
+
+        <section id="about">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <div class="iframe-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7897.506358166543!2d124.23356867238098!3d8.227557630105165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325575eccb18db31%3A0x4e690cfcead61630!2sKharle%20Jane%20Marketing!5e0!3m2!1sen!2sph!4v1714650884462!5m2!1sen!2sph" position="center" width="1190px" autoplay="true" height="400px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+
+
+        
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="javascript.js"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+
+
+
+
+
+        <footer id="dk-footer" class="dk-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="dk-footer-box-info">
+                                <a href="index.html" class="footer-logo">
+                                    <img src="/static/Pet.png" alt="footer_logo" class="img-fluid">
+                                </a>
+                                <p class="footer-info-text">
+                                                      
+                                <div class="footer-social-link">
+                                    <div class="col-md-12 col-lg-6">
+                                        <div class="footer-widget">
+                                            <div class="section-heading">
+                                                <h3>Follow us</h3>
+                                                <span class="animate-border border-black"></span>
+                                            </div>
+                                          
+                                        </div>
+                                        
+         
+                                    </div>
+                      
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                      
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="footer-awarad">
+                                <img src="images/icon/best.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="contact-us">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="contact-info">
+                                            <h3>Badelles St, Poblacion, Iligan City</h3>
+                                            <p>10-A-zone II</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-us contact-us-last">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                        </div>
+
+                                        <div class="contact-info">
+                                            <h3>+63 967 996 7810</h3>
+                                            <p>Give us a call</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="footer-widget footer-left-widget">
+                                        <div class="section-heading">
+                                            <h3>Useful Links</h3>
+                                            <span class="animate-border border-black"></span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">About us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Our Services</a>
+                                            </li>
+                                         
+                                        </ul>
+                                       
+
+                                      
+                                        
+                                    </div><br>
+
+
+   
+                        </div>  
+                                
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="footer-widget">
+                                        <div class="section-heading">
+                                            <h3>Subscribe</h3>
+                                            <span class="animate-border border-black"></span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Contact us</a>
+                                            </li>
+                                            <li>
+                                                <a href="https://chicosnaturalpetmarket.com/blog">Pet BlogS</a>
+                                            </li>
+                                           
+                                         
+                                        </ul>
+                                    </div>
+                                    
+     
+                                </div>
+                            </div>
+                             <!-- create appointment--> <!-- create appointment--> <!-- create appointment--> <!-- create appointment--> <!-- create appointment--> <!-- create appointment-->
+                                    
+                        <div class="filter-form">
+                            <h4>Pet Grooming Reservation</h4>
+                            <form method="post" action="{% url 'grooming_reservation' %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="pet_name" class="form-label">Pet Name</label>
+                                    <input type="text" class="form-control" id="pet_name" name="pet_name" required>
+                                    
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pet_type" class="form-label">Pet Type</label>
+                                    <select class="form-select" id="pet_type" name="pet_type" required>
+                                        <option value="Dog">Dog</option>
+                                        <option value="Cat">Cat</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointment_date" class="form-label">Appointment Date</label>
+                                    <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="appointment_time" class="form-label">Appointment Time</label>
+                                    <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Book Appointment</button>
+                                <i class="fa fa-send"></i>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        
+        
+                <div class="copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span> IT 310 SY 2024-2025 Brian Capiral | 2024</span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="copyright-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="/catlist">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/">my facebook</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/">Support My Drumming</a>
+                                        </li>
+                                        <li>
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="back-to-top" class="back-to-top">
+                    <button class="btn btn-dark" title="Back to Top" style="display: block;">
+                        <i class="fa fa-angle-up"></i>
+                    </button>
+                </div>
+        </footer> 
+    </div>
+
+    <div id="appointment-popup" class="popup">
+        <span id="popup-close" class="close">&times;</span>
+        <strong>Get your Pet Appointments now!</strong>
+        <p class="promo-text">Special Promo: 20% off on all grooming services booked this month!</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to show the popup
+            function showPopup() {
+                var popup = document.getElementById("appointment-popup");
+                popup.style.display = "block";
+            }
+        
+            // Function to close the popup
+            document.getElementById("popup-close").onclick = function() {
+                var popup = document.getElementById("appointment-popup");
+                popup.style.display = "none";
+            };
+        
+            // Show the popup after 3 seconds
+            setTimeout(showPopup, 3000);
+        });
+        
+    </script>
+
+</body>
+</html>

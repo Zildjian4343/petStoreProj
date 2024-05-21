@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %} Search Book {% endblock %}
+{% block body %}
+
+<style>
+    .card {
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .details-button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+    }
+</style>
+
+<div class="card">
+    <h1 class="card-header">Search result for {{ query }}</h1>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr class="bg-danger text-white" style="text-align: center;">
+                <th>Search Number:</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Product Link</th>
+            </tr>
+            {% for x in results %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ x.product_name }}</td>
+                <td>{{ x.desc }}</td>
+                <td>{{ x.price }}</td>
+                <td><img src="{{ x.image.url }}" width="70%" height="70%"></td>
+                <a href="/petDetails/{{x.pet_id}}" class="btn btn-primary">View Details</a>           
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

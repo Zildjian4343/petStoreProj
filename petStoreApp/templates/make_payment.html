@@ -1,0 +1,127 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Payment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px;
+            background-image: url("{% static 'pastel1.jpg' %}"); 
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the opacity as needed */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="file"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .gcash-logo {
+            display: block;
+            margin: 0 auto;
+            width: 200px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <body style="background-image: url('{% static 'gcash-back.jpg' %}');">
+
+        <h1>Make Payment</h1>
+        <p>Please send your payment to the following number on GCash: <strong>09679957810</strong></p>
+        <img src="{% static 'gcash.png' %}" alt="GCash QR Code" class="gcash-logo">
+        <form action="{% url 'process_payment' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            <p id="totalPrice"><b>Total Price: </b>&nbsp;&nbsp;{{ total }}</p>
+        
+            <div class="form-group">
+                <label for="paymentAmount">Enter Payment Amount:</label>
+                <input type="text" id="paymentAmount" name="paymentAmount" class="form-control" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="referenceNumber">Enter Reference Number:</label>
+                <input type="text" id="referenceNumber" name="referenceNumber" class="form-control" placeholder="Enter your reference number">
+            </div>
+            <div class="form-group">
+                <label for="email">Enter Your Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">Enter Your Mobile Number:</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" class="form-control" placeholder="Enter your mobile number">
+            </div>
+            
+            <div class="form-group">
+                <label for="paymentScreenshot">Upload Screenshot (Proof of Payment):</label>
+                <input type="file" id="paymentScreenshot" name="paymentScreenshot" class="form-control-file" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Payment</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the total price element
+            const totalPriceElement = document.getElementById('totalPrice');
+            // Extract the total price value
+            const totalPrice = parseFloat(totalPriceElement.innerText.replace('Total Price:', '').trim());
+            // Set the total price as the value of the payment amount input field
+            document.getElementById('paymentAmount').value = totalPrice;
+        });
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}
+Receipt | Receipt
+{% endblock %}
+{% block body %}
+<style>
+    /* Styles for non-printable elements */
+    .non-printable {
+        display: none;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .receipt-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    
+    .receipt-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .receipt-details {
+        margin-bottom: 20px;
+    }
+    
+    .receipt-details p {
+        color:black;
+        margin: 5px 0;
+    }
+    
+    .receipt-items {
+        margin-bottom: 20px;
+    }
+    
+    .receipt-items .row {
+        margin-bottom: 20px;
+    }
+    
+    .receipt-items img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .receipt-total {
+        margin-bottom: 20px;
+    }
+    
+    .print-btn {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+<div class="non-printable">
+    <!-- Your header and navigation code here -->
+</div>
+<div class="receipt-container">
+    <div class="receipt-header">
+        <h1>Receipt</h1>
+    </div>
+    <div class="receipt-details">
+        <p><b>Name:</b>&nbsp; {{ user.username }}</p>
+        <p><b>Mobile:</b>&nbsp; 1234567890</p>
+        <p><b>Email:</b>&nbsp; {{ user.email }}</p>
+    </div>
+    <div class="receipt-items">
+        <h3>Items:</h3>
+        {% for x in items %}
+        <div class="row">
+            <div class="col-md-6">
+                 <p><b> Name:</b> {{ x.pet.product_name }}</p>
+                        <p><b> Price:</b> {{ x.pet.price }}</p>
+                        <p><b> Quantity:</b> {{ x.quantity }}</p>
+                        <p><b> Details:</b> {{ x.pet.desc }}</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ x.pet.image.url }}" alt="Pet Image">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="receipt-total">
+        <h3>Total:</h3>
+        <p><b>Total items:</b>&nbsp;&nbsp;({{length}})</p>
+        <p><b>Total Price:</b>&nbsp;&nbsp;{{total}}</p>
+    </div>
+    <div class="print-btn">
+        <button onclick="window.print()" class="btn btn-primary"><i class="fas fa-print"></i> Print Receipt</button>
+    </div>
+</div>
+<div class="non-printable">
+    <!-- Your footer code here -->
+</div>
+{% endblock %}

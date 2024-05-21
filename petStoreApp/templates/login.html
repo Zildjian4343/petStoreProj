@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+Kharly Jane | Online Pet store
+{% endblock %}
+{% block body %}
+
+<div class="login-container" id="login-container">
+    <div class="login-card" id="login-card">
+        <button class="btn-close" aria-label="Close" id="close-btn"></button>
+        <center>
+            <h4>LOGIN</h4>
+        </center> 
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="rememberMe" name="remember">
+                <label class="form-check-label" for="rememberMe">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginContainer = document.getElementById('login-container');
+        const loginCard = document.getElementById('login-card');
+
+        setTimeout(() => {
+            loginContainer.classList.add('active');
+            loginCard.classList.add('active');
+        }, 100);
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginContainer = document.getElementById('login-container');
+        const loginCard = document.getElementById('login-card');
+        const closeBtn = document.getElementById('close-btn');
+    
+        setTimeout(() => {
+            loginContainer.classList.add('active');
+            loginCard.classList.add('active');
+        }, 100);
+    
+        closeBtn.addEventListener('click', () => {
+            loginContainer.classList.remove('active');
+            loginCard.classList.remove('active');
+        });
+    });
+</script>
+{% endblock %}

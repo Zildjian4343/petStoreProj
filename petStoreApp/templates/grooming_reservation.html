@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Kharle Jane Pet Store | Base</title>
+{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Pet Appointment Status</h4>
+        <ul class="list-group">
+            {% for order in user_grooming_orders %}
+                <li class="list-group-item">{{ order.pet_name }} - {{ order.appointment_date }} at {{ order.appointment_time }} </li>
+            {% empty %}
+                <li class="list-group-item">No grooming orders found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="filter-form" style="padding: 20px;">
+        <h4>Book Another Pet Appointment</h4>
+        <form method="post" action="{% url 'grooming_reservation' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="pet_name" class="form-label">Pet Name</label>
+                <input type="text" class="form-control" id="pet_name" name="pet_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="pet_type" class="form-label">Pet Type</label>
+                <select class="form-select" id="pet_type" name="pet_type" required>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="appointment_date" class="form-label">Appointment Date</label>
+                <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+            </div>
+            <div class="mb-3">
+                <label for="appointment_time" class="form-label">Appointment Time</label>
+                <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </form>
+    </div>  
+</div>
+{% endblock %}

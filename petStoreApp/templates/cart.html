@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+Kharle Jane Pet Store | View Cart
+{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-9 mt-4">
+        <h5 class=" bg-danger text-white p-2">Customer Details</h5>
+        <br>
+        {% if user.is_authenticated %}
+        <form id="edit-user-form" method="post" action="{% url 'edit_user' %}">
+            {% csrf_token %}
+            <p><b>Username:</b>&nbsp; <input type="text" name="username" value="{{ user.username }}"></p>
+            <p><b>Email:</b>&nbsp; <input type="email" name="email" value="{{ user.email }}"></p>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <br>
+        {% endif %}
+        
+        <h5 class="bg-danger text-white p-2">Cart Details</h5>
+
+        {% for x in items %}
+        <div class="row m-3">
+            <div class="col-md-4">
+                <img src="{{x.pet.image.url}}" alt="" width="100%" height="250px">
+            </div>
+            <div class="col-md-8">
+                <p><b> Name: </b>{{x.pet.product_name}}</p>
+                <p><b> Price: </b>{{x.pet.price}}</p>
+                <p><b> Quantity: </b>{{x.quantity}}</p>
+                <a href="/updateqty/0/{{x.pet.pet_id}}"><button class="btn btn-danger">-</button></a>
+                <input type="number" value="{{x.quantity}}" readonly>
+                <a href="/updateqty/1/{{x.pet.pet_id}}"><button class="btn btn-primary">+</button></a>
+                <p><b> Details: </b>{{x.pet.desc}}</p>
+                <a href="/removeCart/{{x.pet_id}}"><button type="submit" class="btn btn-danger">Remove</button></a>
+            </div>
+        </div>
+        {% empty %}
+        <div>
+            <p>Your Cart is empty...<br>
+                Continue shopping!!
+            </p>
+        </div>
+        {% endfor %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="col-md-3 mt-4">
+        <h5 class="bg-danger text-white p-2">Total</h5>
+        <p class="bg-danger text-white p-2"><b>Total Items({{length}}):</b></p>
+        <hr>
+        <p class="bg-danger text-white p-2"><b>Total Price: </b> {{total}}</p>
+        <a href="/viewOrder"><button type="submit" class="btn btn-primary">Place Order</button></a>
+    </div>
+</div>
+{% endblock %}

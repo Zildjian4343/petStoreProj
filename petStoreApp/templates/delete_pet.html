@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Pet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/dog.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        
+        p {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        form button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Pet</h1>
+    <p>Are you sure you want to delete "{{ pet.product_name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+    </form>
+</body>
+</html>

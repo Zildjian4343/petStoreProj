@@ -1,0 +1,96 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    background-image: url("static/dog.jpg");
+    font-family: Arial, sans-serif;
+    margin-top: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Form container styles */
+.user_card {
+    width: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #f9f9f9;
+    position: relative;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Form title styles */
+#form-title {
+    color: #343a40;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form input styles */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    border-radius: 20px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Submit button styles */
+form input[type="submit"] {
+    border-radius: 20px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #212529;
+}
+
+/* Alert message styles */
+.alert {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: center;
+    background-color: #ffc107;
+    color: #343a40;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Close button styles */
+.btn-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Form container alignment */
+.form_container {
+    text-align: center;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
